@@ -102,8 +102,8 @@ int main()
     mat4_res = mat4_sub_mat4(m, m);
     mat4_print(mat4_res);
 
-    printf("\n\nmat4_det(M)\n");
-    float det = mat4_det(m);
+    printf("\n\nmat4_determinant(M)\n");
+    float det = mat4_determinant(m);
     printf("%f", det);
 
     printf("\n\nmat4_invert(M)\n");

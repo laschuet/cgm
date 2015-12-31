@@ -153,7 +153,7 @@ CGM_LINKAGE vec4 mat4_mul_vec4(mat4 m, vec4 v);
 CGM_LINKAGE mat4 mat4_sub_mat4(mat4 m1, mat4 m2);
 
 // Matrix specific operators
-CGM_LINKAGE float mat4_det(mat4 m);
+CGM_LINKAGE float mat4_determinant(mat4 m);
 CGM_LINKAGE mat4 mat4_invert(mat4 m);
 CGM_LINKAGE mat4 mat4_transpose(mat4 m);
 
@@ -872,7 +872,7 @@ CGM_LINKAGE mat4 mat4_sub_mat4(mat4 m1, mat4 m2)
 }
 
 // -----------------------------------------------------------------------------
-CGM_LINKAGE float mat4_det(mat4 m)
+CGM_LINKAGE float mat4_determinant(mat4 m)
 {
     /*
     00 04 08 12
@@ -910,7 +910,7 @@ CGM_LINKAGE float mat4_det(mat4 m)
 // -----------------------------------------------------------------------------
 CGM_LINKAGE mat4 mat4_invert(mat4 m)
 {
-    float det = mat4_det(m);
+    float det = mat4_determinant(m);
     if (det == 0.0f) {
         return m;
     }
