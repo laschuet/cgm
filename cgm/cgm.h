@@ -1058,7 +1058,7 @@ CGM_LINKAGE mat4 mat4_look_at(vec3 eye, vec3 center, vec3 up)
     m.m[10] = -f.z;
     m.m[15] = 1.0f;
     mat4 translation = mat4_translate(vec3_3f(-eye.x, -eye.y, -eye.z));
-    return mat4_mul_mat4(translation, r);
+    return mat4_mul_mat4(translation, m);
 }
 
 // -----------------------------------------------------------------------------
