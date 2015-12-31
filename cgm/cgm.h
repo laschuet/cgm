@@ -171,6 +171,7 @@ CGM_LINKAGE mat4 mat4_frustum(float left,
                               float top,
                               float near,
                               float far);
+CGM_LINKAGE mat4 mat4_look_at(vec3 eye, vec3 center, vec3 up);
 CGM_LINKAGE mat4 mat4_ortho(float left,
                             float right,
                             float bottom,
@@ -1033,6 +1034,31 @@ CGM_LINKAGE mat4 mat4_frustum(float left,
     r.m[11] = -1.0f;
     r.m[14] = -2.0f * (far * near) / (far - near);
     return r;
+}
+
+// -----------------------------------------------------------------------------
+CGM_LINKAGE mat4 mat4_look_at(vec3 eye, vec3 center, vec3 up)
+{
+    vec3 F = vec3_sub_vec3(center, eye);
+    vec3 f = vec3_normalize(F);
+    vec3 up_normalized = vec3_normalize(up);
+    vec3 s = vec3_cross_vec3(f, up_normalized);
+    vec3 s_normalized = vec3_normalize(s);
+    vec3 u = vec3_cross_vec3(s_normalized, f);
+
+    mat4 m = mat4_zero();
+    m.m[0] = s.x;
+    m.m[1] = u.x;
+    m.m[2] = -f.x;
+    m.m[4] = s.y;
+    m.m[5] = u.y;
+    m.m[6] = -f.y;
+    m.m[8] = s.z;
+    m.m[9] = u.z;
+    m.m[10] = -f.z;
+    m.m[15] = 1.0f;
+    mat4 translation = mat4_translate(vec3_3f(-eye.x, -eye.y, -eye.z));
+    return mat4_mul_mat4(translation, r);
 }
 
 // -----------------------------------------------------------------------------
