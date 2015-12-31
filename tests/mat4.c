@@ -138,6 +138,14 @@ int main()
     mat4_res = mat4_frustum(-5.0f, 5.0f, -5.0f, 5.0f, 0.1f, 100.0f);
     mat4_print(mat4_res);
 
+    vec3 eye = vec3_3f(5.0f, 0.0f, 0.0f);
+    vec3 center = vec3_3f(0.0f, 0.0f, 0.0f);
+    vec3 up = vec3_3f(0.0f, 1.0f, 0.0f);
+    printf("\n\nmat4_look_at(vec3_3f(5.0f, 0.0f, 0.0f), "
+           "vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(0.0f, 1.0f, 0.0f))\n");
+    mat4_res = mat4_look_at(eye, center, up);
+    mat4_print(mat4_res);
+
     printf("\n\nmat4_ortho(-5.0f, 5.0f, -5.0f, 5.0f, 0.1f, 100.0f)\n");
     mat4_res = mat4_ortho(-5.0f, 5.0f, -5.0f, 5.0f, 0.1f, 100.0f);
     mat4_print(mat4_res);
