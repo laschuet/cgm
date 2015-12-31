@@ -106,6 +106,10 @@ int main()
     float det = mat4_det(m);
     printf("%f", det);
 
+    printf("\n\nmat4_invert(M)\n");
+    mat4_res = mat4_invert(m);
+    mat4_print(mat4_res);
+
     printf("\n\nmat4_transpose(M)\n");
     mat4_res = mat4_transpose(m);
     mat4_print(mat4_res);
