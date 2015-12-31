@@ -35,6 +35,7 @@ extern "C" {
 #define CGM_LINKAGE
 #endif // CGM_STATIC
 
+#define CGM_ALMOST_ZERO 10e-7f
 #define CGM_ONE_DEG_IN_RAD 0.0174532925
 #define CGM_ONE_RAD_IN_DEG 57.2957795131
 
@@ -585,7 +586,7 @@ CGM_LINKAGE vec2 vec2_normalize(vec2 v)
 {
     vec2 r;
     float length = vec2_length(v);
-    if (length == 0.0f) {
+    if (length < CGM_ALMOST_ZERO) {
         return vec2_2f(0.0f, 0.0f);
     }
     r.x = v.x / length;
@@ -625,7 +626,7 @@ CGM_LINKAGE vec3 vec3_normalize(vec3 v)
 {
     vec3 r;
     float length = vec3_length(v);
-    if (length == 0.0f) {
+    if (length < CGM_ALMOST_ZERO) {
         return vec3_3f(0.0f, 0.0f, 0.0f);
     }
     r.x = v.x / length;
@@ -666,7 +667,7 @@ CGM_LINKAGE vec4 vec4_normalize(vec4 v)
 {
     vec4 r;
     float length = vec4_length(v);
-    if (length == 0.0f) {
+    if (length < CGM_ALMOST_ZERO) {
         return vec4_4f(0.0f, 0.0f, 0.0f, 0.0f);
     }
     r.x = v.x / length;
@@ -911,7 +912,7 @@ CGM_LINKAGE float mat4_determinant(mat4 m)
 CGM_LINKAGE mat4 mat4_invert(mat4 m)
 {
     float det = mat4_determinant(m);
-    if (det == 0.0f) {
+    if (fabsf(det) < CGM_ALMOST_ZERO) {
         return m;
     }
 
