@@ -38,6 +38,8 @@ extern "C" {
 #define CGM_ALMOST_ZERO 10e-7f
 #define CGM_ONE_DEG_IN_RAD 0.0174532925
 #define CGM_ONE_RAD_IN_DEG 57.2957795131
+#define CGM_PI 3.141592f
+#define CGM_2_PI 6.283184f
 
 typedef struct vec2 {
     float x;
