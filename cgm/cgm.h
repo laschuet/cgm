@@ -41,6 +41,15 @@ extern "C" {
 #define CGM_PI 3.141592f
 #define CGM_2_PI 6.283184f
 
+#ifdef _WIN32
+#ifdef far
+#undef far
+#endif // far
+#ifdef near
+#undef near
+#endif // near
+#endif // _WIN32
+
 typedef struct vec2 {
     float x;
     float y;
