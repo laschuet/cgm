@@ -178,23 +178,13 @@ CGM_LINKAGE mat4 mat4_scale(vec3 v);
 CGM_LINKAGE mat4 mat4_translate(vec3 v);
 
 // Virtual camera functions
-CGM_LINKAGE mat4 mat4_frustum(float left,
-                              float right,
-                              float bottom,
-                              float top,
-                              float near,
-                              float far);
+CGM_LINKAGE mat4 mat4_frustum(float left, float right, float bottom, float top,
+                            float near, float far);
 CGM_LINKAGE mat4 mat4_look_at(vec3 eye, vec3 center, vec3 up);
-CGM_LINKAGE mat4 mat4_ortho(float left,
-                            float right,
-                            float bottom,
-                            float top,
-                            float near,
+CGM_LINKAGE mat4 mat4_ortho(float left, float right, float bottom, float top,
+                        float near, float far);
+CGM_LINKAGE mat4 mat4_perspective(float fovy, float aspect, float near,
                             float far);
-CGM_LINKAGE mat4 mat4_perspective(float fovy,
-                                  float aspect,
-                                  float near,
-                                  float far);
 
 // Output
 CGM_LINKAGE void mat4_print(mat4 m);
@@ -1114,12 +1104,8 @@ CGM_LINKAGE mat4 mat4_translate(vec3 v)
 }
 
 // -----------------------------------------------------------------------------
-CGM_LINKAGE mat4 mat4_frustum(float left,
-                              float right,
-                              float bottom,
-                              float top,
-                              float near,
-                              float far)
+CGM_LINKAGE mat4 mat4_frustum(float left, float right, float bottom, float top,
+                            float near, float far)
 {
     mat4 r = mat4_zero();
     r.m[0] = 2.0f * near / (right - left);
@@ -1158,12 +1144,8 @@ CGM_LINKAGE mat4 mat4_look_at(vec3 eye, vec3 center, vec3 up)
 }
 
 // -----------------------------------------------------------------------------
-CGM_LINKAGE mat4 mat4_ortho(float left,
-                            float right,
-                            float bottom,
-                            float top,
-                            float near,
-                            float far)
+CGM_LINKAGE mat4 mat4_ortho(float left, float right, float bottom, float top,
+                        float near, float far)
 {
     mat4 r = mat4_zero();
     r.m[0] = 2.0f / (right - left);
@@ -1177,10 +1159,8 @@ CGM_LINKAGE mat4 mat4_ortho(float left,
 }
 
 // -----------------------------------------------------------------------------
-CGM_LINKAGE mat4 mat4_perspective(float fovy,
-                                  float aspect,
-                                  float near,
-                                  float far)
+CGM_LINKAGE mat4 mat4_perspective(float fovy, float aspect, float near,
+                                float far)
 {
     float fovy_rad = CGM_ONE_DEG_IN_RAD * fovy;
     float range = tanf(fovy_rad / 2.0f) * near;
