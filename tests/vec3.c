@@ -52,8 +52,8 @@ int main()
     vec3_print(vec3_res);
 
     printf("\n\nvec3_add_vec3((0.0f, 0.0f, 0.0f)^T, (1.0f, 1.0f, 1.0f)^T)\n");
-    vec3_res = vec3_add_vec3(vec3_3f(0.0f, 0.0f, 0.0f),
-                             vec3_3f(1.0f, 1.0f, 1.0f));
+    vec3_res =
+        vec3_add_vec3(vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(1.0f, 1.0f, 1.0f));
     vec3_print(vec3_res);
 
     printf("\n\nvec3_div_f((1.0f, 2.0f, 3.0f)^T, %.4f)\n", 2.0f);
@@ -61,8 +61,8 @@ int main()
     vec3_print(vec3_res);
 
     printf("\n\nvec3_div_vec3((1.0f, 1.0f, 1.0f)^T, (2.0f, 2.0f, 2.0f)^T)\n");
-    vec3_res = vec3_div_vec3(vec3_3f(1.0f, 1.0f, 1.0f),
-                             vec3_3f(2.0f, 2.0f, 2.0f));
+    vec3_res =
+        vec3_div_vec3(vec3_3f(1.0f, 1.0f, 1.0f), vec3_3f(2.0f, 2.0f, 2.0f));
     vec3_print(vec3_res);
 
     printf("\n\nvec3_mul_f((1.0f, 2.0f, 3.0f)^T, %.4f)\n", 2.0f);
@@ -70,8 +70,8 @@ int main()
     vec3_print(vec3_res);
 
     printf("\n\nvec3_mul_vec3((0.0f, 0.0f, 0.0f)^T, (1.0f, 1.0f, 1.0f)^T)\n");
-    vec3_res = vec3_mul_vec3(vec3_3f(0.0f, 0.0f, 0.0f),
-                             vec3_3f(1.0f, 1.0f, 1.0f));
+    vec3_res =
+        vec3_mul_vec3(vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(1.0f, 1.0f, 1.0f));
     vec3_print(vec3_res);
 
     printf("\n\nvec3_sub_f((0.0f, 0.0f, 0.0f)^T, %.4f)\n", 1.0f);
@@ -79,18 +79,18 @@ int main()
     vec3_print(vec3_res);
 
     printf("\n\nvec3_sub_vec3((0.0f, 0.0f, 0.0f)^T, (1.0f, 1.0f, 1.0f)^T)\n");
-    vec3_res = vec3_sub_vec3(vec3_3f(0.0f, 0.0f, 0.0f),
-                             vec3_3f(1.0f, 1.0f, 1.0f));
+    vec3_res =
+        vec3_sub_vec3(vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(1.0f, 1.0f, 1.0f));
     vec3_print(vec3_res);
 
     printf("\n\nvec3_cross_vec3((1.0f, 0.0f, 0.0f)^T, (0.0f, 1.0f, 0.0f)^T)\n");
-    vec3_res = vec3_cross_vec3(vec3_3f(1.0f, 0.0f, 0.0f),
-                               vec3_3f(0.0f, 1.0f, 0.0f));
+    vec3_res =
+        vec3_cross_vec3(vec3_3f(1.0f, 0.0f, 0.0f), vec3_3f(0.0f, 1.0f, 0.0f));
     vec3_print(vec3_res);
 
     printf("\n\nvec3_dot_vec3((1.0f, 2.0f, 3.0f)^T, (1.0f, 2.0f, 3.0f)^T)\n");
-    float dot = vec3_dot_vec3(vec3_3f(1.0f, 2.0f, 3.0f),
-                              vec3_3f(1.0f, 2.0f, 3.0f));
+    float dot =
+        vec3_dot_vec3(vec3_3f(1.0f, 2.0f, 3.0f), vec3_3f(1.0f, 2.0f, 3.0f));
     printf("%f\n", dot);
 
     printf("\nvec3_length((1.0f, 2.0f, 3.0f)^T)\n");

@@ -145,8 +145,7 @@ int main()
     vec3 eye = vec3_3f(5.0f, 0.0f, 0.0f);
     vec3 center = vec3_3f(0.0f, 0.0f, 0.0f);
     vec3 up = vec3_3f(0.0f, 1.0f, 0.0f);
-    printf("\n\nmat4_look_at(vec3_3f(5.0f, 0.0f, 0.0f), "
-           "vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(0.0f, 1.0f, 0.0f))\n");
+    printf("\n\nmat4_look_at(vec3_3f(5.0f, 0.0f, 0.0f), vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(0.0f, 1.0f, 0.0f))\n");
     mat4_res = mat4_look_at(eye, center, up);
     mat4_print(mat4_res);
 

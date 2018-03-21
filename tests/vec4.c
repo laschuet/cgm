@@ -51,20 +51,20 @@ int main()
     vec4_res = vec4_add_f(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f), 1.0f);
     vec4_print(vec4_res);
 
-    printf("\n\nvec4_add_vec4((0.0f, 0.0f, 0.0f, 0.0f)^T, "
-           "(1.0f, 1.0f, 1.0f, 1.0f)^T)\n");
-    vec4_res = vec4_add_vec4(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f),
-                             vec4_4f(1.0f, 1.0f, 1.0f, 1.0f));
+    printf("\n\nvec4_add_vec4((0.0f, 0.0f, 0.0f, 0.0f)^T, (1.0f, 1.0f, 1.0f, 1.0f)^T)\n");
+    vec4_res =
+        vec4_add_vec4(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f),
+                    vec4_4f(1.0f, 1.0f, 1.0f, 1.0f));
     vec4_print(vec4_res);
 
     printf("\n\nvec4_div_f((1.0f, 2.0f, 3.0f, 4.0f)^T, %.4f)\n", 2.0f);
     vec4_res = vec4_div_f(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f), 2.0f);
     vec4_print(vec4_res);
 
-    printf("\n\nvec4_div_vec4((1.0f, 1.0f, 1.0f, 1.0f)^T, "
-           "(2.0f, 2.0f, 2.0f, 2.0f)^T)\n");
-    vec4_res = vec4_div_vec4(vec4_4f(1.0f, 1.0f, 1.0f, 1.0f),
-                             vec4_4f(2.0f, 2.0f, 2.0f, 2.0f));
+    printf("\n\nvec4_div_vec4((1.0f, 1.0f, 1.0f, 1.0f)^T, (2.0f, 2.0f, 2.0f, 2.0f)^T)\n");
+    vec4_res =
+        vec4_div_vec4(vec4_4f(1.0f, 1.0f, 1.0f, 1.0f),
+                    vec4_4f(2.0f, 2.0f, 2.0f, 2.0f));
     vec4_print(vec4_res);
 
     printf("\n\nvec4_mul_f((1.0f, 2.0f, 3.0f, 4.0f)^T, %.4f)\n", 2.0f);
@@ -79,22 +79,22 @@ int main()
     vec4_res = vec4_sub_f(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f), 1.0f);
     vec4_print(vec4_res);
 
-    printf("\n\nvec4_sub_vec4((0.0f, 0.0f, 0.0f, 0.0f)^T, "
-           "(1.0f, 1.0f, 1.0f, 1.0f)^T)\n");
-    vec4_res = vec4_sub_vec4(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f),
-                             vec4_4f(1.0f, 1.0f, 1.0f, 1.0f));
+    printf("\n\nvec4_sub_vec4((0.0f, 0.0f, 0.0f, 0.0f)^T, (1.0f, 1.0f, 1.0f, 1.0f)^T)\n");
+    vec4_res =
+        vec4_sub_vec4(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f),
+                    vec4_4f(1.0f, 1.0f, 1.0f, 1.0f));
     vec4_print(vec4_res);
 
-    printf("\n\nvec4_cross_vec4((1.0f, 0.0f, 0.0f, 1.0f)^T, "
-           "(0.0f, 1.0f, 0.0f, 1.0f)^T)\n");
-    vec4_res = vec4_cross_vec4(vec4_4f(1.0f, 0.0f, 0.0f, 1.0f),
-                               vec4_4f(0.0f, 1.0f, 0.0f, 1.0f));
+    printf("\n\nvec4_cross_vec4((1.0f, 0.0f, 0.0f, 1.0f)^T, (0.0f, 1.0f, 0.0f, 1.0f)^T)\n");
+    vec4_res =
+        vec4_cross_vec4(vec4_4f(1.0f, 0.0f, 0.0f, 1.0f),
+                    vec4_4f(0.0f, 1.0f, 0.0f, 1.0f));
     vec4_print(vec4_res);
 
-    printf("\n\nvec4_dot_vec4((1.0f, 2.0f, 3.0f, 4.0f)^T, "
-           "(1.0f, 2.0f, 3.0f, 4.0f)^T)\n");
-    float dot = vec4_dot_vec4(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f),
-                              vec4_4f(1.0f, 2.0f, 3.0f, 4.0f));
+    printf("\n\nvec4_dot_vec4((1.0f, 2.0f, 3.0f, 4.0f)^T, (1.0f, 2.0f, 3.0f, 4.0f)^T)\n");
+    float dot =
+        vec4_dot_vec4(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f),
+                    vec4_4f(1.0f, 2.0f, 3.0f, 4.0f));
     printf("%f\n", dot);
 
     printf("\nvec4_length((1.0f, 2.0f, 3.0f, 4.0f)^T)\n");
