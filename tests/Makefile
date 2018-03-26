@@ -1,6 +1,5 @@
 CC = gcc
 CFLAGS = -Wall
-OBJ = vec2.o
 
 all: vec2 vec3 vec4 mat4
 
