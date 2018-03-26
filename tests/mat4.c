@@ -94,7 +94,7 @@ int main()
     mat4_res = mat4_mul_mat4(mat4_identity(), mat4_zero());
     mat4_print(mat4_res);
 
-    printf("\n\nmat4_mul_vec4(M, (1.0f, 1.0f, 1.0f, 2.0f)^T)\n");
+    printf("\n\nmat4_mul_vec4(M, (1.0f, 1.0f, 1.0f, 2.0f)')\n");
     vec4_res = mat4_mul_vec4(m, vec4_4f(1.0f, 1.0f, 1.0f, 2.0f));
     vec4_print(vec4_res);
 
@@ -114,7 +114,7 @@ int main()
     mat4_res = mat4_transpose(m);
     mat4_print(mat4_res);
 
-    printf("\n\nmat4_rotate((1.0f, 1.0f, 1.0f)^T, %f)\n", rad);
+    printf("\n\nmat4_rotate((1.0f, 1.0f, 1.0f)', %f)\n", rad);
     mat4_res = mat4_rotate(vec3_3f(1.0f, 1.0f, 1.0f), rad);
     mat4_print(mat4_res);
 
@@ -130,11 +130,11 @@ int main()
     mat4_res = mat4_rotate_z(rad);
     mat4_print(mat4_res);
 
-    printf("\n\nmat4_scale((1.0f, 2.0f, 2.0f)^T)\n");
+    printf("\n\nmat4_scale((1.0f, 2.0f, 2.0f)')\n");
     mat4_res = mat4_scale(vec3_3f(1.0f, 2.0f, 2.0f));
     mat4_print(mat4_res);
 
-    printf("\n\nmat4_translate((1.0f, 2.0f, 0.0f)^T)\n");
+    printf("\n\nmat4_translate((1.0f, 2.0f, 0.0f)')\n");
     mat4_res = mat4_translate(vec3_3f(1.0f, 2.0f, 0.0f));
     mat4_print(mat4_res);
 
