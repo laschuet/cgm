@@ -21,93 +21,68 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-#include <stdio.h>
-
 #define CGM_IMPLEMENTATION
 #include "../cgm/cgm.h"
 
+#define TEST_IMPLEMENTATION
+#include "test.h"
+
 int main()
 {
-    vec4 vec4_res;
+    vec4 v;
 
-    printf("vec4_4f(0.0f, 1.0f, 2.0f, 3.0f)\n");
-    vec4_res = vec4_4f(0.0f, 1.0f, 2.0f, 3.0f);
-    vec4_print(vec4_res);
+    v = vec4_4f(0.0f, 1.0f, 2.0f, 3.0f);
+    TEST_VEC4_EQUAL("vec4_4f", v, 0.0f, 1.0f, 2.0f, 3.0f);
 
-    printf("\n\nvec4_vec2_2f((0.0f, 1.0f)', 2.0f, 3.0f)\n");
-    vec4_res = vec4_vec2_2f(vec2_2f(0.0f, 1.0f), 2.0f, 3.0f);
-    vec4_print(vec4_res);
+    v = vec4_vec2_2f(vec2_2f(0.0f, 1.0f), 2.0f, 3.0f);
+    TEST_VEC4_EQUAL("vec4_vec2_2f", v, 0.0f, 1.0f, 2.0f, 3.0f);
 
-    printf("\n\nvec4_vec3_f((0.0f, 1.0f, 2.0f)', 3.0f)\n");
-    vec4_res = vec4_vec3_f(vec3_3f(0.0f, 1.0f, 2.0f), 3.0f);
-    vec4_print(vec4_res);
+    v = vec4_vec3_f(vec3_3f(0.0f, 1.0f, 2.0f), 3.0f);
+    TEST_VEC4_EQUAL("vev4_vec3_f", v, 0.0f, 1.0f, 2.0f, 3.0f);
 
-    printf("\n\nvec4_vec4((0.0f, 1.0f, 2.0f, 3.0f)')\n");
-    vec4_res = vec4_vec4(vec4_4f(0.0f, 1.0f, 2.0f, 3.0f));
-    vec4_print(vec4_res);
+    v = vec4_vec4(vec4_4f(0.0f, 1.0f, 2.0f, 3.0f));
+    TEST_VEC4_EQUAL("vec4_vec4", v, 0.0f, 1.0f, 2.0f, 3.0f);
 
-    printf("\n\nvec4_add_f((0.0f, 0.0f, 0.0f, 0.0f)', %.4f)\n", 1.0f);
-    vec4_res = vec4_add_f(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f), 1.0f);
-    vec4_print(vec4_res);
+    vec4 a = vec4_4f(1.0f, 2.0f, 3.0f, 4.0f);
+    vec4 b = vec4_4f(4.0f, 4.0f, 4.0f, 4.0f);
+    vec4 c = vec4_4f(0.0f, 0.0f, 0.0f, 1.0f);
 
-    printf("\n\nvec4_add_vec4((0.0f, 0.0f, 0.0f, 0.0f)', (1.0f, 1.0f, 1.0f, 1.0f)')\n");
-    vec4_res =
-        vec4_add_vec4(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f),
-                    vec4_4f(1.0f, 1.0f, 1.0f, 1.0f));
-    vec4_print(vec4_res);
+    v = vec4_add_f(a, 1.0f);
+    TEST_VEC4_EQUAL("vec4_add_f", v, 2.0f, 3.0f, 4.0f, 5.0f);
 
-    printf("\n\nvec4_div_f((1.0f, 2.0f, 3.0f, 4.0f)', %.4f)\n", 2.0f);
-    vec4_res = vec4_div_f(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f), 2.0f);
-    vec4_print(vec4_res);
+    v = vec4_add_vec4(a, b);
+    TEST_VEC4_EQUAL("vec4_add_vec4", v, 5.0f, 6.0f, 7.0f, 8.0f);
 
-    printf("\n\nvec4_div_vec4((1.0f, 1.0f, 1.0f, 1.0f)', (2.0f, 2.0f, 2.0f, 2.0f)')\n");
-    vec4_res =
-        vec4_div_vec4(vec4_4f(1.0f, 1.0f, 1.0f, 1.0f),
-                    vec4_4f(2.0f, 2.0f, 2.0f, 2.0f));
-    vec4_print(vec4_res);
+    v = vec4_div_f(a, 2.0f);
+    TEST_VEC4_EQUAL("vec4_div_f", v, 0.5f, 1.0f, 1.5f, 2.0f);
 
-    printf("\n\nvec4_mul_f((1.0f, 2.0f, 3.0f, 4.0f)', %.4f)\n", 2.0f);
-    vec4_res = vec4_mul_f(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f), 2.0f);
-    vec4_print(vec4_res);
+    v = vec4_div_vec4(a, b);
+    TEST_VEC4_EQUAL("vec4_div_vec4", v, 0.25f, 0.5f, 0.75f, 1.0f);
 
-    printf("\n\nvec4_mul_vec4((0, 0, 0, 0)', (1, 1, 1, 1)')\n");
-    vec4_res = vec4_mul_vec4(vec4_4f(0, 0, 0, 0), vec4_4f(1, 1, 1, 1));
-    vec4_print(vec4_res);
+    v = vec4_mul_f(a, 2.0f);
+    TEST_VEC4_EQUAL("vec4_mul_f", v, 2.0f, 4.0f, 6.0f, 8.0f);
 
-    printf("\n\nvec4_sub_f((0.0f, 0.0f, 0.0f, 0.0f)', %.4f)\n", 1.0f);
-    vec4_res = vec4_sub_f(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f), 1.0f);
-    vec4_print(vec4_res);
+    v = vec4_mul_vec4(a, b);
+    TEST_VEC4_EQUAL("vec4_mul_vec4", v, 4.0f, 8.0f, 12.0f, 16.0f);
 
-    printf("\n\nvec4_sub_vec4((0.0f, 0.0f, 0.0f, 0.0f)', (1.0f, 1.0f, 1.0f, 1.0f)')\n");
-    vec4_res =
-        vec4_sub_vec4(vec4_4f(0.0f, 0.0f, 0.0f, 0.0f),
-                    vec4_4f(1.0f, 1.0f, 1.0f, 1.0f));
-    vec4_print(vec4_res);
+    v = vec4_sub_f(a, 1.0f);
+    TEST_VEC4_EQUAL("vec4_sub_f", v, 0.0f, 1.0f, 2.0f, 3.0f);
 
-    printf("\n\nvec4_cross_vec4((1.0f, 0.0f, 0.0f, 1.0f)', (0.0f, 1.0f, 0.0f, 1.0f)')\n");
-    vec4_res =
-        vec4_cross_vec4(vec4_4f(1.0f, 0.0f, 0.0f, 1.0f),
-                    vec4_4f(0.0f, 1.0f, 0.0f, 1.0f));
-    vec4_print(vec4_res);
+    v = vec4_sub_vec4(a, b);
+    TEST_VEC4_EQUAL("vec4_sub_vec4", v, -3.0f, -2.0f, -1.0f, 0.0f);
 
-    printf("\n\nvec4_dot_vec4((1.0f, 2.0f, 3.0f, 4.0f)', (1.0f, 2.0f, 3.0f, 4.0f)')\n");
-    float dot =
-        vec4_dot_vec4(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f),
-                    vec4_4f(1.0f, 2.0f, 3.0f, 4.0f));
-    printf("%f\n", dot);
+    float dot = vec4_dot_vec4(a, b);
+    TEST_SCALAR_EQUAL("vec4_dot_vec4", dot, 40.0f);
 
-    printf("\nvec4_length((1.0f, 2.0f, 3.0f, 4.0f)')\n");
-    float length = vec4_length(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f));
-    printf("%f\n", length);
+    float length = vec4_length(c);
+    TEST_SCALAR_EQUAL("vec4_length", length, 1.0f);
 
-    printf("\nvec4_sq_length((1.0f, 2.0f, 3.0f, 4.0f)')\n");
-    float sq_length = vec4_sq_length(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f));
-    printf("%f\n", sq_length);
+    float sq_length = vec4_sq_length(a);
+    TEST_SCALAR_EQUAL("vec4_sq_length", sq_length, 30.0f);
 
-    printf("\nvec4_normalize((1.0f, 2.0f, 3.0f, 4.0f)')\n");
-    vec4_res = vec4_normalize(vec4_4f(1.0f, 2.0f, 3.0f, 4.0f));
-    vec4_print(vec4_res);
-    printf("\n");
+    v = vec4_normalize(c);
+    TEST_SCALAR_EQUAL("vec4_normalize", vec4_length(v), 1.0f);
+    TEST_VEC4_EQUAL("vec4_normalize", v, 0.0f, 0.0f, 0.0f, 1.0f);
 
     return 0;
 }

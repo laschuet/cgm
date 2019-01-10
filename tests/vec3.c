@@ -21,89 +21,71 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  ******************************************************************************/
-#include <stdio.h>
-
 #define CGM_IMPLEMENTATION
 #include "../cgm/cgm.h"
 
+#define TEST_IMPLEMENTATION
+#include "test.h"
+
 int main()
 {
-    vec3 vec3_res;
+    vec3 v;
 
-    printf("vec3_3f(0.0f, 1.0f, 2.0f)\n");
-    vec3_res = vec3_3f(0.0f, 1.0f, 2.0f);
-    vec3_print(vec3_res);
+    v = vec3_3f(0.0f, 1.0f, 2.0f);
+    TEST_VEC3_EQUAL("vec3_3f", v, 0.0f, 1.0f, 2.0f);
 
-    printf("\n\nvec3_vec2_f((0.0f, 1.0f)', 2.0f)\n");
-    vec3_res = vec3_vec2_f(vec2_2f(0.0f, 1.0f), 2.0f);
-    vec3_print(vec3_res);
+    v = vec3_vec2_f(vec2_2f(0.0f, 1.0f), 2.0f);
+    TEST_VEC3_EQUAL("vec3_vec2_f", v, 0.0f, 1.0f, 2.0f);
 
-    printf("\n\nvec3_vec3((0.0f, 1.0f, 2.0f)')\n");
-    vec3_res = vec3_vec3(vec3_3f(0.0f, 1.0f, 2.0f));
-    vec3_print(vec3_res);
+    v = vec3_vec3(vec3_3f(0.0f, 1.0f, 2.0f));
+    TEST_VEC3_EQUAL("vec3_vec3", v, 0.0f, 1.0f, 2.0f);
 
-    printf("\n\nvec3_vec4((0.0f, 1.0f, 2.0f, 3.0f)')\n");
-    vec3_res = vec3_vec4(vec4_4f(0.0f, 1.0f, 2.0f, 3.0f));
-    vec3_print(vec3_res);
+    v = vec3_vec4(vec4_4f(0.0f, 1.0f, 2.0f, 3.0f));
+    TEST_VEC3_EQUAL("vec3_vec4", v, 0.0f, 1.0f, 2.0f);
 
-    printf("\n\nvec3_add_f((0.0f, 0.0f, 0.0f)', %.4f)\n", 1.0f);
-    vec3_res = vec3_add_f(vec3_3f(0.0f, 0.0f, 0.0f), 1.0f);
-    vec3_print(vec3_res);
+    vec3 a = vec3_3f(1.0f, 2.0f, 3.0f);
+    vec3 b = vec3_3f(4.0f, 4.0f, 4.0f);
+    vec3 c = vec3_3f(0.0f, 0.0f, 1.0f);
 
-    printf("\n\nvec3_add_vec3((0.0f, 0.0f, 0.0f)', (1.0f, 1.0f, 1.0f)')\n");
-    vec3_res =
-        vec3_add_vec3(vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(1.0f, 1.0f, 1.0f));
-    vec3_print(vec3_res);
+    v = vec3_add_f(a, 1.0f);
+    TEST_VEC3_EQUAL("vec3_add_f", v, 2.0f, 3.0f, 4.0f);
 
-    printf("\n\nvec3_div_f((1.0f, 2.0f, 3.0f)', %.4f)\n", 2.0f);
-    vec3_res = vec3_div_f(vec3_3f(1.0f, 2.0f, 3.0f), 2.0f);
-    vec3_print(vec3_res);
+    v = vec3_add_vec3(a, b);
+    TEST_VEC3_EQUAL("vec3_add_vec3", v, 5.0f, 6.0f, 7.0f);
 
-    printf("\n\nvec3_div_vec3((1.0f, 1.0f, 1.0f)', (2.0f, 2.0f, 2.0f)')\n");
-    vec3_res =
-        vec3_div_vec3(vec3_3f(1.0f, 1.0f, 1.0f), vec3_3f(2.0f, 2.0f, 2.0f));
-    vec3_print(vec3_res);
+    v = vec3_div_f(a, 2.0f);
+    TEST_VEC3_EQUAL("vec3_div_f", v, 0.5f, 1.0f, 1.5f);
 
-    printf("\n\nvec3_mul_f((1.0f, 2.0f, 3.0f)', %.4f)\n", 2.0f);
-    vec3_res = vec3_mul_f(vec3_3f(1.0f, 2.0f, 3.0f), 2.0f);
-    vec3_print(vec3_res);
+    v = vec3_div_vec3(a, b);
+    TEST_VEC3_EQUAL("vec3_div_vec3", v, 0.25f, 0.5f, 0.75f);
 
-    printf("\n\nvec3_mul_vec3((0.0f, 0.0f, 0.0f)', (1.0f, 1.0f, 1.0f)')\n");
-    vec3_res =
-        vec3_mul_vec3(vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(1.0f, 1.0f, 1.0f));
-    vec3_print(vec3_res);
+    v = vec3_mul_f(a, 2.0f);
+    TEST_VEC3_EQUAL("vec3_mul_f", v, 2.0f, 4.0f, 6.0f);
 
-    printf("\n\nvec3_sub_f((0.0f, 0.0f, 0.0f)', %.4f)\n", 1.0f);
-    vec3_res = vec3_sub_f(vec3_3f(0.0f, 0.0f, 0.0f), 1.0f);
-    vec3_print(vec3_res);
+    v = vec3_mul_vec3(a, b);
+    TEST_VEC3_EQUAL("vec3_mul_vec3", v, 4.0f, 8.0f, 12.0f);
 
-    printf("\n\nvec3_sub_vec3((0.0f, 0.0f, 0.0f)', (1.0f, 1.0f, 1.0f)')\n");
-    vec3_res =
-        vec3_sub_vec3(vec3_3f(0.0f, 0.0f, 0.0f), vec3_3f(1.0f, 1.0f, 1.0f));
-    vec3_print(vec3_res);
+    v = vec3_sub_f(a, 1.0f);
+    TEST_VEC3_EQUAL("vec3_sub_f", v, 0.0f, 1.0f, 2.0f);
 
-    printf("\n\nvec3_cross_vec3((1.0f, 0.0f, 0.0f)', (0.0f, 1.0f, 0.0f)')\n");
-    vec3_res =
-        vec3_cross_vec3(vec3_3f(1.0f, 0.0f, 0.0f), vec3_3f(0.0f, 1.0f, 0.0f));
-    vec3_print(vec3_res);
+    v = vec3_sub_vec3(a, b);
+    TEST_VEC3_EQUAL("vec3_sub_vec3", v, -3.0f, -2.0f, -1.0f);
 
-    printf("\n\nvec3_dot_vec3((1.0f, 2.0f, 3.0f)', (1.0f, 2.0f, 3.0f)')\n");
-    float dot =
-        vec3_dot_vec3(vec3_3f(1.0f, 2.0f, 3.0f), vec3_3f(1.0f, 2.0f, 3.0f));
-    printf("%f\n", dot);
+    v = vec3_cross_vec3(a, b);
+    TEST_VEC3_EQUAL("vec3_cross_vec3", v, -4.0f, 8.0f, -4.0f);
 
-    printf("\nvec3_length((1.0f, 2.0f, 3.0f)')\n");
-    float length = vec3_length(vec3_3f(1.0f, 2.0f, 3.0f));
-    printf("%f\n", length);
+    float dot = vec3_dot_vec3(a, b);
+    TEST_SCALAR_EQUAL("vec3_dot_vec3", dot, 24.0f);
 
-    printf("\nvec3_sq_length((1.0f, 2.0f, 3.0f)')\n");
-    float sq_length = vec3_sq_length(vec3_3f(1.0f, 2.0f, 3.0f));
-    printf("%f\n", sq_length);
+    float length = vec3_length(c);
+    TEST_SCALAR_EQUAL("vec3_length", length, 1.0f);
 
-    printf("\nvec3_normalize((1.0f, 2.0f, 3.0f)')\n");
-    vec3_res = vec3_normalize(vec3_3f(1.0f, 2.0f, 3.0f));
-    vec3_print(vec3_res);
-    printf("\n");
+    float sq_length = vec3_sq_length(a);
+    TEST_SCALAR_EQUAL("vec3_sq_length", sq_length, 14.0f);
+
+    v = vec3_normalize(c);
+    TEST_SCALAR_EQUAL("vec3_normalize", vec3_length(v), 1.0f);
+    TEST_VEC3_EQUAL("vec3_normalize", v, 0.0f, 0.0f, 1.0f);
 
     return 0;
 }
