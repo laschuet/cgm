@@ -131,7 +131,6 @@ CGM_LINKAGE float vec3_length(vec3 v);
 CGM_LINKAGE float vec3_sq_length(vec3 v);
 CGM_LINKAGE vec3 vec3_normalize(vec3 v);
 
-CGM_LINKAGE vec4 vec4_cross_vec4(vec4 a, vec4 b);
 CGM_LINKAGE float vec4_dot_vec4(vec4 a, vec4 b);
 CGM_LINKAGE float vec4_length(vec4 v);
 CGM_LINKAGE float vec4_sq_length(vec4 v);
@@ -633,15 +632,6 @@ CGM_LINKAGE vec3 vec3_normalize(vec3 v)
     r.y = v.y / length;
     r.z = v.z / length;
     return r;
-}
-
-// -----------------------------------------------------------------------------
-CGM_LINKAGE vec4 vec4_cross_vec4(vec4 a, vec4 b)
-{
-    float x = a.y * b.z - a.z * b.y;
-    float y = a.z * b.x - a.x * b.z;
-    float z = a.x * b.y - a.y * b.x;
-    return vec4_4f(x, y, z, 1.0f);
 }
 
 // -----------------------------------------------------------------------------
